@@ -17,6 +17,9 @@ importers:
       pino:
         specifier: ^9.5.0
         version: 9.5.0
+      prettier:
+        specifier: ^3.4.1
+        version: 3.4.1
     devDependencies:
       typescript:
         specifier: ^5.4.3
@@ -50,6 +53,11 @@ packages:
 
   pino@9.5.0:
     resolution: {integrity: sha512-xSEmD4pLnV54t0NOUN16yCl7RIB1c5UUOse5HSyEXtBp+FgFQyPeDutc+Q2ZO7/22vImV7VfEjH/1zV2QuqvYw==}
+    hasBin: true
+
+  prettier@3.4.1:
+    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
+    engines: {node: '>=14'}
     hasBin: true
 
   process-warning@4.0.0:
@@ -112,6 +120,8 @@ snapshots:
       safe-stable-stringify: 2.5.0
       sonic-boom: 4.2.0
       thread-stream: 3.1.0
+
+  prettier@3.4.1: {}
 
   process-warning@4.0.0: {}
 

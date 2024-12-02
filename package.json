@@ -27,6 +27,7 @@
     "dependencies": {
         "@budarin/json-rpc-request": "^1.0.13",
         "@budarin/ulid": "^1.0.3",
-        "pino": "^9.5.0"
+        "pino": "^9.5.0",
+        "prettier": "^3.4.1"
     }
 }
