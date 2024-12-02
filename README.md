@@ -2,7 +2,17 @@
 
 Provider for any JSON RPC API.
 
-Create API provider for your API:
+Install the package^
+
+```cmd
+// npm
+npm i @budarin/json-rpc-api-provider;
+
+// pnpm
+pnpm add @budarin/json-rpc-api-provider;
+```
+
+Create an API provider for your API:
 
 ```ts
 //apiProvider.ts
@@ -11,6 +21,7 @@ import type { Todo } from '../types.ts';
 import type { JsonRpcResponse } from '@budarin/json-rpc-request';
 
 import { request } from '../../request.ts';
+import { createApiProvider } from '@budarin/json-rpc-api-provider';
 
 interface API {
     getTodo: () => Promise<JsonRpcResponse<Todo>>;
@@ -19,7 +30,7 @@ interface API {
 }
 
 
-export const apiProvider = createApi<API>(request); // optional yaou can pass a logger instance
+export const apiProvider = createApiProvider<API>(request); // optional yaou can pass a logger instance
 ```
 
 And somwhere in the code:
