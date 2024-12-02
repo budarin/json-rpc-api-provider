@@ -1,0 +1,32 @@
+{
+    "name": "@budarin/json-rpc-api-provider",
+    "version": "1.0.0",
+    "repository": {
+        "url": "git+https://github.com/budarin/json-rpc-api-provider.git"
+    },
+    "author": "Vadim Budarin <budarin-vv@yandex.ru>",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "scripts": {
+        "build": "sh ./tools/build.sh",
+        "prepublish": "pnpm build",
+        "patch-version": "pnpm version --patch",
+        "npm-publish": "pnpm build && pnpm publish",
+        "upgrade deps": "pnpm up --latest -i"
+    },
+    "devDependencies": {
+        "typescript": "^5.4.3"
+    },
+    "packageManager": "pnpm@9.14.3+sha512.c0f53ee99477ed969b82b289ad011a5d16bf1623c957e7f29eabe8d0c00b574c29b8c7f54f6c67ee710c73f285c8154d07ce44b46fe2c0eeb476a90441bac371",
+    "dependencies": {
+        "@budarin/json-rpc-request": "^1.0.13",
+        "@budarin/ulid": "^1.0.3",
+        "pino": "^9.5.0"
+    }
+}
