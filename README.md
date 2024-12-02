@@ -1,6 +1,6 @@
 # json-rpc-api-provider
 
-Provider for any JSON Prp API.
+Provider for any JSON RPC API.
 
 Create API provider for your API:
 
@@ -28,7 +28,6 @@ And somwhere in the code:
 import { apiProvider } from '../providers/apiProvider.ts'
 
 const { error, result} = apiProvider.getTodo();
-
 if (error) {
     // log the error
     return;
@@ -37,7 +36,7 @@ if (error) {
 ...
 
 const newTodo = { ... }
-cons createTodoResponse =  apiProvider.createTodo(newTodo);
+const createTodoResponse = apiProvider.createTodo(newTodo);
 
 if (createTodoResponse.error) {
     //
