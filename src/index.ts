@@ -26,7 +26,7 @@ function camelToSnake(str: string): string {
 }
 
 
-export const createApiProvider = <T extends object>(request: RequestProvider, logger: LoggerProvider): DeepReadonly<T> =>
+export const createApiProvider = <T extends object>(request: RequestProvider, logger?: LoggerProvider): DeepReadonly<T> =>
     new Proxy(
         {},
         {
@@ -35,7 +35,9 @@ export const createApiProvider = <T extends object>(request: RequestProvider, lo
                     const id = ulid();
                     const methodName = camelToSnake(method_name);
 
-                    logger.debug(`вызов метода API: ${methodName}`, 'props:', props);
+                    if (logger) {
+                        logger.debug(`вызов метода API: ${methodName}`, 'props:', props);
+                    }
 
                     const requestParams = {
                         body: {
