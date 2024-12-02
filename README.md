@@ -40,7 +40,7 @@ And somwhere in the code:
 ```ts
 import { apiProvider } from '../providers/apiProvider.ts'
 
-const { error, result} = apiProvider.getTodo();
+const { error, result} = apiProvider.getTodo(); // => call 'get_todo' POST method
 if (error) {
     // log the error
     return;
@@ -49,7 +49,7 @@ if (error) {
 ...
 
 const newTodo = { ... }
-const createTodoResponse = apiProvider.createTodo(newTodo);
+const createTodoResponse = apiProvider.createTodo(newTodo); // => call 'create_todo' POST method
 
 if (createTodoResponse.error) {
     //
