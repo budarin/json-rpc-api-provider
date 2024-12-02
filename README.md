@@ -32,7 +32,7 @@ interface API {
 }
 
 
-export const apiProvider = createApiProvider<API>(request); // optional yaou can pass a logger instance
+export const apiProvider = createApiProvider<API>(request); // optional you can pass a logger instance
 ```
 
 And somwhere in the code:
