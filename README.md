@@ -21,7 +21,7 @@ import type { Todo } from '../types.ts';
 import type { JsonRpcResponse } from '@budarin/json-rpc-request';
 
 import { request } from '../../request.ts';
-import { createApiProvider } from '@budarin/json-rpc-api-provider';
+import { createApiProvider, JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 
 // Describe your API interface

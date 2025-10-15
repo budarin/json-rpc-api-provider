@@ -32,3 +32,6 @@ export const createApiProvider = <T extends object>(request: RequestProvider): D
             },
         },
     ) as DeepReadonly<T>;
+
+
+    export type { JsonRpcResponse, RequestProvider, DeepReadonly};
