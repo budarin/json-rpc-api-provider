@@ -23,8 +23,10 @@
     },
     "scripts": {
         "build": "sh ./tools/build.sh",
+        "type-check": "tsc --noEmit",
         "prepublish": "pnpm build",
         "patch-version": "pnpm version patch",
+        "pnpm-install": "pnpm install",
         "upgrade deps": "pnpm up --latest -i",
         "publish-package": "pnpm build && pnpm publish --access=public"
     }
