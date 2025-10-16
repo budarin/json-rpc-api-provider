@@ -19,7 +19,7 @@
     },
     "dependencies": {
         "@budarin/json-rpc-request": "^1.0.13",
-        "@budarin/ulid": "^1.0.4"
+        "@budarin/ulid": "^1.0.5"
     },
     "scripts": {
         "build": "sh ./tools/build.sh",
