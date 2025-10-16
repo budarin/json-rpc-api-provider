@@ -2,13 +2,11 @@ import { ulid } from '@budarin/ulid';
 
 import type { Request, DeepReadonly, JsonRpcResponse } from '@budarin/json-rpc-request';
 
-
 type RequestProvider = DeepReadonly<Request>;
 
 function camelToSnake(str: string): string {
     return str.replace(/([A-Z])/g, ($1) => `_${$1.toLowerCase()}`);
 }
-
 
 export const createApiProvider = <T extends object>(request: RequestProvider): DeepReadonly<T> =>
     new Proxy(
@@ -23,7 +21,7 @@ export const createApiProvider = <T extends object>(request: RequestProvider): D
                         body: {
                             id,
                             method: methodName,
-                            params: props,
+                            ...(props !== undefined && { params: props }),
                         },
                     };
 
@@ -33,5 +31,4 @@ export const createApiProvider = <T extends object>(request: RequestProvider): D
         },
     ) as DeepReadonly<T>;
 
-
-    export type { JsonRpcResponse, RequestProvider, DeepReadonly};
+export type { JsonRpcResponse, RequestProvider, DeepReadonly };
