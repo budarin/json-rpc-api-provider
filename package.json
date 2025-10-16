@@ -13,13 +13,6 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "scripts": {
-        "build": "sh ./tools/build.sh",
-        "prepublish": "pnpm build",
-        "patch-version": "npm version --patch",
-        "npm-publish": "pnpm build && pnpm publish",
-        "upgrade deps": "pnpm up --latest -i"
-    },
     "devDependencies": {
         "prettier": "^3.6.2",
         "typescript": "^5.9.3"
@@ -27,6 +20,13 @@
     "dependencies": {
         "@budarin/json-rpc-request": "^1.0.13",
         "@budarin/ulid": "^1.0.4"
+    },
+    "scripts": {
+        "build": "sh ./tools/build.sh",
+        "prepublish": "pnpm build",
+        "patch-version": "npm version patch",
+        "npm-publish": "pnpm build && pnpm publish",
+        "upgrade deps": "pnpm up --latest -i"
     },
     "packageManager": "pnpm@9.14.3+sha512.c0f53ee99477ed969b82b289ad011a5d16bf1623c957e7f29eabe8d0c00b574c29b8c7f54f6c67ee710c73f285c8154d07ce44b46fe2c0eeb476a90441bac371"
 }
