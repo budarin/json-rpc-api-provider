@@ -12,8 +12,8 @@ importers:
         specifier: ^1.0.13
         version: 1.0.13
       '@budarin/ulid':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
     devDependencies:
       prettier:
         specifier: ^3.6.2
@@ -27,8 +27,8 @@ packages:
   '@budarin/json-rpc-request@1.0.13':
     resolution: {integrity: sha512-c28PFL/Mb6z77eWiR4pdzdib5Bghl/D+gOIevfwKK5zEXqNXNIth7zEzOgQi3oXC6o4qec7LniiOKrE8jVkP2Q==}
 
-  '@budarin/ulid@1.0.3':
-    resolution: {integrity: sha512-qspU+rIrksztT+D61A0kG2b2MuHFOWl9EyP0FQrDJQw/rk3WphTWNINmY0SAkhcow5x2CM4yytPnQIzHkinnUA==}
+  '@budarin/ulid@1.0.4':
+    resolution: {integrity: sha512-CwsThbTVJAsTMMeSnKHeNrHOEcNz2A2IBz2I1G/ppuOWxJPAMIToz1szEzYrd/Rq2KGoX+4oz3mMyN/7pDJ7Fg==}
 
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
@@ -44,7 +44,7 @@ snapshots:
 
   '@budarin/json-rpc-request@1.0.13': {}
 
-  '@budarin/ulid@1.0.3': {}
+  '@budarin/ulid@1.0.4': {}
 
   prettier@3.6.2: {}
 
