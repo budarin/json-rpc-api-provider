@@ -18,7 +18,7 @@ Create an API provider for your API:
 
 ```ts
 // apiProvider.ts
-
+import { uuidv7 } from 'uuidv7';
 import type { Todo } from '../types';
 import type { JsonRpcResponse } from '@budarin/json-rpc-request';
 import { request } from '../../request';
@@ -31,10 +31,7 @@ interface API {
     // ... other methods
 }
 
-// UUID generator function
-const generateUuid = () => crypto.randomUUID();
-
-export const apiProvider = createApiProvider<API>(request, generateUuid);
+export const apiProvider = createApiProvider<API>(request, uuidv7);
 ```
 
 And somewhere in your code:
