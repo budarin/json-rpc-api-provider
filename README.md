@@ -34,8 +34,7 @@ yarn add @budarin/json-rpc-api-provider
 
 ```ts
 import { uuidv7 } from 'uuidv7';
-import { createApiProvider } from '@budarin/json-rpc-api-provider';
-import type { JsonRpcResponse } from '@budarin/json-rpc-request';
+import { createApiProvider, type JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 // Define your API interface
 interface TodoAPI {
@@ -93,7 +92,7 @@ if (error) {
 The request function handles the actual HTTP communication:
 
 ```ts
-import type { Request, JsonRpcResponse } from '@budarin/json-rpc-request';
+import type { Request, JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 const request = async <P, R, E = unknown>(params: Request): Promise<JsonRpcResponse<R, E>> => {
     try {
@@ -123,7 +122,7 @@ const request = async <P, R, E = unknown>(params: Request): Promise<JsonRpcRespo
 ### Step 2: Define Your API Interface
 
 ```ts
-import type { JsonRpcResponse } from '@budarin/json-rpc-request';
+import type { JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 interface User {
     id: string;
@@ -256,7 +255,7 @@ Creates a type-safe proxy object that converts method calls into JSON-RPC reques
 
 #### Parameters
 
-- **`request`**: `Request` (from `@budarin/json-rpc-request`)
+- **`request`**: `Request` (from `@budarin/json-rpc-api-provider`)
     - A function that handles HTTP communication
     - Must accept a `Request` object with a `body` property
     - Should return a `Promise<JsonRpcResponse<T, E>>`
@@ -349,13 +348,13 @@ if (response.result) {
 
 ## 🤝 Integration with @budarin/json-rpc-request
 
-This library is designed to work seamlessly with [`@budarin/json-rpc-request`](https://github.com/budarin/json-rpc-request), which provides:
+This library is designed to work seamlessly with [`@budarin/json-rpc-request`](https://github.com/budarin/json-rpc-request). The core types and utilities are re-exported from this package for convenience:
 
-- Type definitions for JSON-RPC protocol
-- Request/Response interfaces
-- Utility types for building JSON-RPC clients
+- `JsonRpcResponse` - Type definitions for JSON-RPC responses
+- `Request` - Request interface for HTTP communication
+- `DeepReadonly` - Utility type for immutable objects
 
-Together, they provide a complete, type-safe solution for JSON-RPC APIs.
+All necessary types are available directly from `@budarin/json-rpc-api-provider`, providing a complete, type-safe solution for JSON-RPC APIs.
 
 ## 📄 License
 
