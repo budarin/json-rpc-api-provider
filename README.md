@@ -34,6 +34,7 @@ yarn add @budarin/json-rpc-api-provider
 
 ```ts
 import { uuidv7 } from 'uuidv7';
+import { createRequest } from '@budarin/json-rpc-request';
 import { createApiProvider, type JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 // Define your API interface
@@ -43,6 +44,9 @@ interface TodoAPI {
     updateTodo: (id: string, updates: Partial<Todo>) => Promise<JsonRpcResponse<Todo>>;
     deleteTodo: (id: string) => Promise<JsonRpcResponse<void>>;
 }
+
+// Create request
+const request = createRequest('/api');
 
 // Create your API provider
 const api = createApiProvider<TodoAPI>(request, uuidv7);
@@ -82,135 +86,6 @@ const { result, error } = await api.getTodo(todoId);
 //     ^? Fully typed!
 if (error) {
     /* TypeScript knows the error shape */
-}
-```
-
-## 📖 Usage Guide
-
-### Step 1: Set Up Your Request Function
-
-You need a request function that handles JSON-RPC communication. You can either:
-
-**Option A: Use the recommended library**
-
-```bash
-npm install @budarin/json-rpc-request
-```
-
-```ts
-import { createRequest } from '@budarin/json-rpc-request';
-
-const request = createRequest('/api/jsonrpc');
-```
-
-**Option B: Create your own request function**
-
-```ts
-import type { Request, JsonRpcResponse } from '@budarin/json-rpc-api-provider';
-
-const request = async <P, R, E = unknown>(params: Request): Promise<JsonRpcResponse<R, E>> => {
-    // Your implementation that handles JSON-RPC protocol
-    // Must return { result?: T } for success or { error?: JsonRpcError } for errors
-};
-```
-
-### Step 2: Define Your API Interface
-
-```ts
-import type { JsonRpcResponse } from '@budarin/json-rpc-api-provider';
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-}
-
-interface UserAPI {
-    // Simple method without parameters
-    getCurrentUser: () => Promise<JsonRpcResponse<User>>;
-
-    // Method with single parameter
-    getUser: (userId: string) => Promise<JsonRpcResponse<User>>;
-
-    // Method with object parameter
-    createUser: (data: { name: string; email: string }) => Promise<JsonRpcResponse<User>>;
-
-    // Method with multiple properties in parameter
-    updateUser: (params: { id: string; updates: Partial<User> }) => Promise<JsonRpcResponse<User>>;
-
-    // Method returning void
-    deleteUser: (userId: string) => Promise<JsonRpcResponse<void>>;
-}
-```
-
-### Step 3: Create the API Provider
-
-```ts
-import { uuidv7 } from 'uuidv7';
-import { createApiProvider } from '@budarin/json-rpc-api-provider';
-
-export const userApi = createApiProvider<UserAPI>(request, uuidv7);
-```
-
-### Step 4: Use in Your Application
-
-```ts
-// Get current user
-const { result: user, error } = await userApi.getCurrentUser();
-// Calls JSON-RPC method: "get_current_user"
-
-if (error) {
-    console.error('Failed to fetch user:', error.message);
-    return;
-}
-
-console.log('User:', user);
-
-// Create new user
-const createResponse = await userApi.createUser({
-    name: 'John Doe',
-    email: 'john@example.com',
-});
-// Calls JSON-RPC method: "create_user"
-
-// Update user
-const updateResponse = await userApi.updateUser({
-    id: user.id,
-    updates: { name: 'Jane Doe' },
-});
-// Calls JSON-RPC method: "update_user"
-```
-
-## 🔧 Advanced Examples
-
-### Custom Error Handling
-
-```ts
-interface ApiError {
-    code: number;
-    message: string;
-    details?: Record<string, unknown>;
-}
-
-interface API {
-    riskyOperation: (data: unknown) => Promise<JsonRpcResponse<Result, ApiError>>;
-}
-
-const api = createApiProvider<API>(request, uuidv7);
-
-const { result, error } = await api.riskyOperation(data);
-
-if (error) {
-    switch (error.code) {
-        case 404:
-            console.error('Not found:', error.message);
-            break;
-        case 500:
-            console.error('Server error:', error.details);
-            break;
-        default:
-            console.error('Unknown error:', error);
-    }
 }
 ```
 
