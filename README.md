@@ -1,11 +1,11 @@
 # json-rpc-api-provider
 
-[![npm version](https://badge.fury.io/js/@budarin%2Fjson-rpc-api-provider.svg)](https://www.npmjs.com/package/@budarin/json-rpc-api-provider)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+A lightweight, zero-configuration TypeScript library that transforms your interface definitions into fully-typed JSON-RPC API clients. No code generation, no boilerplate—just pure Proxy magic.
 
 > **Elegant, type-safe JSON-RPC API provider with automatic camelCase to snake_case conversion**
 
-A lightweight, zero-configuration TypeScript library that transforms your interface definitions into fully-typed JSON-RPC API clients. No code generation, no boilerplate—just pure Proxy magic.
+[![npm version](https://badge.fury.io/js/@budarin%2Fjson-rpc-api-provider.svg)](https://www.npmjs.com/package/@budarin/json-rpc-api-provider)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ Features
 
@@ -65,12 +65,14 @@ const response = await fetch('/api', {
         jsonrpc: '2.0',
         id: generateId(),
         method: 'get_todo', // Easy to mistype
-        params: { id: todoId }
-    })
+        params: { id: todoId },
+    }),
 });
 const data = await response.json();
 // No type checking on response
-if (data.error) { /* ... */ }
+if (data.error) {
+    /* ... */
+}
 ```
 
 ### After: With json-rpc-api-provider
@@ -79,7 +81,9 @@ if (data.error) { /* ... */ }
 // Clean, type-safe, idiomatic
 const { result, error } = await api.getTodo(todoId);
 //     ^? Fully typed!
-if (error) { /* TypeScript knows the error shape */ }
+if (error) {
+    /* TypeScript knows the error shape */
+}
 ```
 
 ## 📖 Usage Guide
@@ -91,9 +95,7 @@ The request function handles the actual HTTP communication:
 ```ts
 import type { Request, JsonRpcResponse } from '@budarin/json-rpc-request';
 
-const request = async <P, R, E = unknown>(
-    params: Request
-): Promise<JsonRpcResponse<R, E>> => {
+const request = async <P, R, E = unknown>(params: Request): Promise<JsonRpcResponse<R, E>> => {
     try {
         const response = await fetch('/api/jsonrpc', {
             method: 'POST',
@@ -140,10 +142,7 @@ interface UserAPI {
     createUser: (data: { name: string; email: string }) => Promise<JsonRpcResponse<User>>;
 
     // Method with multiple properties in parameter
-    updateUser: (params: {
-        id: string;
-        updates: Partial<User>
-    }) => Promise<JsonRpcResponse<User>>;
+    updateUser: (params: { id: string; updates: Partial<User> }) => Promise<JsonRpcResponse<User>>;
 
     // Method returning void
     deleteUser: (userId: string) => Promise<JsonRpcResponse<void>>;
@@ -176,14 +175,14 @@ console.log('User:', user);
 // Create new user
 const createResponse = await userApi.createUser({
     name: 'John Doe',
-    email: 'john@example.com'
+    email: 'john@example.com',
 });
 // Calls JSON-RPC method: "create_user"
 
 // Update user
 const updateResponse = await userApi.updateUser({
     id: user.id,
-    updates: { name: 'Jane Doe' }
+    updates: { name: 'Jane Doe' },
 });
 // Calls JSON-RPC method: "update_user"
 ```
@@ -239,13 +238,13 @@ await authApi.login({ username, password });
 
 The library automatically converts your camelCase method names to snake_case for JSON-RPC:
 
-| JavaScript/TypeScript | JSON-RPC Method |
-|----------------------|-----------------|
-| `getTodo()` | `get_todo` |
-| `createTodo()` | `create_todo` |
-| `getUserProfile()` | `get_user_profile` |
-| `updateAPIKey()` | `update_a_p_i_key` |
-| `deleteOldData()` | `delete_old_data` |
+| JavaScript/TypeScript | JSON-RPC Method    |
+| --------------------- | ------------------ |
+| `getTodo()`           | `get_todo`         |
+| `createTodo()`        | `create_todo`      |
+| `getUserProfile()`    | `get_user_profile` |
+| `updateAPIKey()`      | `update_a_p_i_key` |
+| `deleteOldData()`     | `delete_old_data`  |
 
 This allows you to write idiomatic JavaScript/TypeScript while adhering to JSON-RPC naming conventions.
 
@@ -258,33 +257,29 @@ Creates a type-safe proxy object that converts method calls into JSON-RPC reques
 #### Parameters
 
 - **`request`**: `Request` (from `@budarin/json-rpc-request`)
-  - A function that handles HTTP communication
-  - Must accept a `Request` object with a `body` property
-  - Should return a `Promise<JsonRpcResponse<T, E>>`
+    - A function that handles HTTP communication
+    - Must accept a `Request` object with a `body` property
+    - Should return a `Promise<JsonRpcResponse<T, E>>`
 
 - **`uuidGenerator`**: `() => string`
-  - A function that generates unique identifiers for each request
-  - Called once per API method invocation
-  - Common choices: `uuidv4`, `uuidv7`, `nanoid`, or custom implementations
+    - A function that generates unique identifiers for each request
+    - Called once per API method invocation
+    - Common choices: `uuidv4`, `uuidv7`, `nanoid`, or custom implementations
 
 #### Returns
 
 - **`DeepReadonly<T>`**: A proxy object with methods matching your API interface
-  - All methods are deeply immutable to prevent accidental modifications
-  - Each method call automatically:
-    - Generates a unique ID using `uuidGenerator`
-    - Converts the method name from camelCase to snake_case
-    - Wraps parameters in the JSON-RPC format
-    - Returns a properly typed `JsonRpcResponse<Result, Error>`
+    - All methods are deeply immutable to prevent accidental modifications
+    - Each method call automatically:
+        - Generates a unique ID using `uuidGenerator`
+        - Converts the method name from camelCase to snake_case
+        - Wraps parameters in the JSON-RPC format
+        - Returns a properly typed `JsonRpcResponse<Result, Error>`
 
 #### Type Definitions
 
 ```ts
-import type {
-    JsonRpcResponse,
-    RequestProvider,
-    DeepReadonly
-} from '@budarin/json-rpc-api-provider';
+import type { JsonRpcResponse, RequestProvider, DeepReadonly } from '@budarin/json-rpc-api-provider';
 
 // JsonRpcResponse<T, E = unknown>
 interface JsonRpcResponse<T, E = unknown> {
