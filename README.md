@@ -87,35 +87,30 @@ if (error) {
 
 ## 📖 Usage Guide
 
-### Step 1: Define Your Request Function
+### Step 1: Set Up Your Request Function
 
-The request function handles the actual HTTP communication:
+You need a request function that handles JSON-RPC communication. You can either:
+
+**Option A: Use the recommended library**
+
+```bash
+npm install @budarin/json-rpc-request
+```
+
+```ts
+import { createRequest } from '@budarin/json-rpc-request';
+
+const request = createRequest('/api/jsonrpc');
+```
+
+**Option B: Create your own request function**
 
 ```ts
 import type { Request, JsonRpcResponse } from '@budarin/json-rpc-api-provider';
 
 const request = async <P, R, E = unknown>(params: Request): Promise<JsonRpcResponse<R, E>> => {
-    try {
-        const response = await fetch('/api/jsonrpc', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                jsonrpc: '2.0',
-                ...params.body,
-            }),
-        });
-
-        return await response.json();
-    } catch (error) {
-        return {
-            error: {
-                code: -32000,
-                message: error.message,
-            },
-        };
-    }
+    // Your implementation that handles JSON-RPC protocol
+    // Must return { result?: T } for success or { error?: JsonRpcError } for errors
 };
 ```
 
