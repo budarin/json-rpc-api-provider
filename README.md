@@ -112,7 +112,7 @@ The library automatically converts your camelCase method names to snake_case for
 | `getTodo()`           | `get_todo`         |
 | `createTodo()`        | `create_todo`      |
 | `getUserProfile()`    | `get_user_profile` |
-| `updateAPIKey()`      | `update_a_p_i_key` |
+| `updateAPIKey()`      | `update_api_key`   |
 | `deleteOldData()`     | `delete_old_data`  |
 
 This allows you to write idiomatic JavaScript/TypeScript while adhering to JSON-RPC naming conventions.
