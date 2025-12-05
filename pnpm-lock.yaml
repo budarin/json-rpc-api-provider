@@ -9,23 +9,23 @@ importers:
   .:
     dependencies:
       '@budarin/json-rpc-request':
-        specifier: ^1.0.13
-        version: 1.0.13
+        specifier: ^1.1.2
+        version: 1.1.2
     devDependencies:
       prettier:
-        specifier: ^3.6.2
-        version: 3.6.2
+        specifier: ^3.7.4
+        version: 3.7.4
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
 
 packages:
 
-  '@budarin/json-rpc-request@1.0.13':
-    resolution: {integrity: sha512-c28PFL/Mb6z77eWiR4pdzdib5Bghl/D+gOIevfwKK5zEXqNXNIth7zEzOgQi3oXC6o4qec7LniiOKrE8jVkP2Q==}
+  '@budarin/json-rpc-request@1.1.2':
+    resolution: {integrity: sha512-WeIhW+egQKzoere5E6pIQRikXSjMhOD1maUttgl2LGdI6mfX05Z3S/F5HXTgwEgfg2tYYzhi0qQpMFP4x3Lrrg==}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -36,8 +36,8 @@ packages:
 
 snapshots:
 
-  '@budarin/json-rpc-request@1.0.13': {}
+  '@budarin/json-rpc-request@1.1.2': {}
 
-  prettier@3.6.2: {}
+  prettier@3.7.4: {}
 
   typescript@5.9.3: {}

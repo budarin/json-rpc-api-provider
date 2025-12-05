@@ -1,6 +1,6 @@
 {
     "name": "@budarin/json-rpc-api-provider",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "repository": {
         "url": "git+https://github.com/budarin/json-rpc-api-provider.git"
     },
@@ -14,11 +14,11 @@
         "registry": "https://registry.npmjs.org/"
     },
     "devDependencies": {
-        "prettier": "^3.6.2",
+        "prettier": "^3.7.4",
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "@budarin/json-rpc-request": "^1.0.13"
+        "@budarin/json-rpc-request": "^1.1.2"
     },
     "scripts": {
         "build": "sh ./tools/build.sh",
@@ -26,7 +26,7 @@
         "prepublish": "pnpm build",
         "patch-version": "pnpm version patch",
         "pnpm-install": "pnpm install",
-        "upgrade deps": "pnpm up --latest -i",
-        "publish-package": "pnpm build && pnpm publish --access=public"
+        "publish-package": "pnpm build && pnpm publish --access=public",
+        "upgrade deps": "pnpm up --latest -i"
     }
 }
