@@ -1,6 +1,6 @@
 import type { Request, DeepReadonly, JsonRpcResponse } from '@budarin/json-rpc-request';
 
-type RequestProvider = DeepReadonly<Request>;
+type RequestProvider = Request;
 
 function camelToSnake(str: string): string {
     return str.replace(/([A-Z])/g, ($1) => `_${$1.toLowerCase()}`);
