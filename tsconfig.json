@@ -7,14 +7,14 @@
 
         // Environment Settings
         // See also https://aka.ms/tsconfig/module
-        "module": "esnext",
+        "module": "NodeNext",
         "target": "esnext",
         "types": [],
         // For nodejs:
         // "lib": ["esnext"],
         // "types": ["node"],
         // and npm install -D @types/node
-        "moduleResolution": "nodenext",
+        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
 
         // Other Outputs
