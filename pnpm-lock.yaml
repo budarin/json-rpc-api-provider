@@ -9,35 +9,35 @@ importers:
   .:
     dependencies:
       '@budarin/json-rpc-request':
-        specifier: ^1.1.3
-        version: 1.1.3
+        specifier: ^1.1.4
+        version: 1.1.4
     devDependencies:
       prettier:
-        specifier: ^3.7.4
-        version: 3.7.4
+        specifier: ^3.8.2
+        version: 3.8.2
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.2
+        version: 6.0.2
 
 packages:
 
-  '@budarin/json-rpc-request@1.1.3':
-    resolution: {integrity: sha512-hHVQqC2nLHtSe6Fd7MsVkn2u7CXK9AI2SZxUe0kcqp90wJOZGc6YyLgKxYfBx8IeT8P0YAxNZacLzz1hu12Q7Q==}
+  '@budarin/json-rpc-request@1.1.4':
+    resolution: {integrity: sha512-mk4EFizh+sxM97nhkyWyb4BfWjiZ13nYWzG4exHNIfePAHl+0N+3n5RNPZLDD80bvd22jZ2ZS4QZf3poh51xuA==}
 
-  prettier@3.7.4:
-    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+  prettier@3.8.2:
+    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
     engines: {node: '>=14'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
 snapshots:
 
-  '@budarin/json-rpc-request@1.1.3': {}
+  '@budarin/json-rpc-request@1.1.4': {}
 
-  prettier@3.7.4: {}
+  prettier@3.8.2: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.2: {}
